@@ -26,6 +26,10 @@ namespace Desktop_Starter
 
 		private void SaveButton_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrWhiteSpace(nameTextBox.Text) == true)
+			{
+				return;
+			}
 			var toDoTaskStatus =
 					databaseContext.TaskStatuses
 					.Where(current => current.Titile.ToLower() == "ToDo".ToLower())
@@ -40,7 +44,8 @@ namespace Desktop_Starter
 
 				Description = descriptionTextBox.Text.ToString(),
 
-				StartDate = DateTime.Parse(startDateMaskedTextBox.Text.ToString()),
+				StartDate = 
+					DateTime.TryParse(startDateMaskedTextBox.Text.ToString(), out DateTime dateTime) == true ? dateTime : DateTime.Now,
 
 				IsActive = true,
 			};
@@ -75,10 +80,10 @@ namespace Desktop_Starter
 			{
 				if (isShowDeactive == true)
 				{
-					 tasks =
-						databaseContext.Tasks
-						.ToList()
-						;
+					tasks =
+					   databaseContext.Tasks
+					   .ToList()
+					   ;
 				}
 
 				if (isShowDeactive == false)

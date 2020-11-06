@@ -67,10 +67,8 @@ namespace Desktop_Starter
 				foundedEntity.TaskStatus = taskStatus.Where(current => current.Titile.ToLower() == "Done".ToLower()).FirstOrDefault();
 			}
 
-			//if (endDateMaskedTextBox.Text != string.Empty)
-			//{
-			//	foundedEntity.EndtDate = DateTime.TryParse(endDateMaskedTextBox.Text.ToString(),out foundedEntity.EndtDate);
-			//}
+			foundedEntity.EndtDate = 
+				DateTime.TryParse(endDateMaskedTextBox.Text.ToString(), out DateTime dateTime) == true ? dateTime : foundedEntity.EndtDate;
 
 			if (deactiveCheckBox.Checked == true)
 			{
