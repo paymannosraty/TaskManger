@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Base
@@ -34,5 +35,11 @@ namespace Models.Base
 
 		public System.DateTime InsertDateTime { get; set; }
 		// **********
+
+		// **********
+		[Required]
+		public bool IsActive { get; set; }
+		// **********
+
 	}
 }

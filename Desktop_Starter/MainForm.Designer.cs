@@ -29,20 +29,22 @@
 		private void InitializeComponent()
 		{
 			this.addTaskGroupBox = new System.Windows.Forms.GroupBox();
+			this.startDateMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+			this.startDateLabel = new System.Windows.Forms.Label();
 			this.descriptionLabel = new System.Windows.Forms.Label();
 			this.descriptionTextBox = new System.Windows.Forms.TextBox();
 			this.saveButton = new System.Windows.Forms.Button();
 			this.nameTextBox = new System.Windows.Forms.TextBox();
 			this.nameLabel = new System.Windows.Forms.Label();
 			this.taskDataGridView = new System.Windows.Forms.DataGridView();
-			this.startDateLabel = new System.Windows.Forms.Label();
-			this.startDateMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+			this.isShowDeactiveCheckBox = new System.Windows.Forms.CheckBox();
 			this.addTaskGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.taskDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// addTaskGroupBox
 			// 
+			this.addTaskGroupBox.Controls.Add(this.isShowDeactiveCheckBox);
 			this.addTaskGroupBox.Controls.Add(this.startDateMaskedTextBox);
 			this.addTaskGroupBox.Controls.Add(this.startDateLabel);
 			this.addTaskGroupBox.Controls.Add(this.descriptionLabel);
@@ -56,6 +58,24 @@
 			this.addTaskGroupBox.TabIndex = 0;
 			this.addTaskGroupBox.TabStop = false;
 			this.addTaskGroupBox.Text = "Add Task";
+			// 
+			// startDateMaskedTextBox
+			// 
+			this.startDateMaskedTextBox.Location = new System.Drawing.Point(72, 119);
+			this.startDateMaskedTextBox.Mask = "00/00/0000 90:00";
+			this.startDateMaskedTextBox.Name = "startDateMaskedTextBox";
+			this.startDateMaskedTextBox.Size = new System.Drawing.Size(100, 20);
+			this.startDateMaskedTextBox.TabIndex = 5;
+			this.startDateMaskedTextBox.ValidatingType = typeof(System.DateTime);
+			// 
+			// startDateLabel
+			// 
+			this.startDateLabel.AutoSize = true;
+			this.startDateLabel.Location = new System.Drawing.Point(6, 122);
+			this.startDateLabel.Name = "startDateLabel";
+			this.startDateLabel.Size = new System.Drawing.Size(52, 13);
+			this.startDateLabel.TabIndex = 4;
+			this.startDateLabel.Text = "StartDate";
 			// 
 			// descriptionLabel
 			// 
@@ -107,25 +127,19 @@
 			this.taskDataGridView.Name = "taskDataGridView";
 			this.taskDataGridView.Size = new System.Drawing.Size(632, 221);
 			this.taskDataGridView.TabIndex = 0;
+			this.taskDataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.taskDataGridView_RowsRemoved);
 			this.taskDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TaskDataGridView_MouseDoubleClick);
 			// 
-			// startDateLabel
+			// isShowDeactiveCheckBox
 			// 
-			this.startDateLabel.AutoSize = true;
-			this.startDateLabel.Location = new System.Drawing.Point(6, 122);
-			this.startDateLabel.Name = "startDateLabel";
-			this.startDateLabel.Size = new System.Drawing.Size(52, 13);
-			this.startDateLabel.TabIndex = 4;
-			this.startDateLabel.Text = "StartDate";
-			// 
-			// startDateMaskedTextBox
-			// 
-			this.startDateMaskedTextBox.Location = new System.Drawing.Point(72, 119);
-			this.startDateMaskedTextBox.Mask = "00/00/0000 90:00";
-			this.startDateMaskedTextBox.Name = "startDateMaskedTextBox";
-			this.startDateMaskedTextBox.Size = new System.Drawing.Size(100, 20);
-			this.startDateMaskedTextBox.TabIndex = 5;
-			this.startDateMaskedTextBox.ValidatingType = typeof(System.DateTime);
+			this.isShowDeactiveCheckBox.AutoSize = true;
+			this.isShowDeactiveCheckBox.Location = new System.Drawing.Point(153, 173);
+			this.isShowDeactiveCheckBox.Name = "isShowDeactiveCheckBox";
+			this.isShowDeactiveCheckBox.Size = new System.Drawing.Size(104, 17);
+			this.isShowDeactiveCheckBox.TabIndex = 7;
+			this.isShowDeactiveCheckBox.Text = "Show Deactives";
+			this.isShowDeactiveCheckBox.UseVisualStyleBackColor = true;
+			this.isShowDeactiveCheckBox.CheckedChanged += new System.EventHandler(this.isShowDeactiveCheckBox_CheckedChanged);
 			// 
 			// MainForm
 			// 
@@ -157,6 +171,7 @@
 		private System.Windows.Forms.TextBox descriptionTextBox;
 		private System.Windows.Forms.MaskedTextBox startDateMaskedTextBox;
 		private System.Windows.Forms.Label startDateLabel;
+		private System.Windows.Forms.CheckBox isShowDeactiveCheckBox;
 	}
 }
 

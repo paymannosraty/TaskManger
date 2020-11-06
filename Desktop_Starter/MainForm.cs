@@ -21,7 +21,7 @@ namespace Desktop_Starter
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			LoadTasks();
+			LoadTasks(isShowDeactive: false);
 		}
 
 		private void SaveButton_Click(object sender, EventArgs e)
@@ -41,6 +41,8 @@ namespace Desktop_Starter
 				Description = descriptionTextBox.Text.ToString(),
 
 				StartDate = DateTime.Parse(startDateMaskedTextBox.Text.ToString()),
+
+				IsActive = true,
 			};
 
 			databaseContext.Tasks.Add(task);
@@ -54,12 +56,12 @@ namespace Desktop_Starter
 
 		private void RefreshTaskDataGridView()
 		{
-			LoadTasks();
+			LoadTasks(isShowDeactive: false);
 			taskDataGridView.Update();
 			taskDataGridView.Refresh();
 		}
 
-		private void LoadTasks()
+		private void LoadTasks(bool isShowDeactive)
 		{
 			databaseContext = new Models.DatabaseContext();
 
@@ -67,12 +69,26 @@ namespace Desktop_Starter
 				databaseContext.Tasks
 				.Any();
 
+			List<Models.Task> tasks = new List<Models.Task>();
+
 			if (hasTask == true)
 			{
-				var tasks =
-					databaseContext.Tasks
-					.ToList()
-					;
+				if (isShowDeactive == true)
+				{
+					 tasks =
+						databaseContext.Tasks
+						.ToList()
+						;
+				}
+
+				if (isShowDeactive == false)
+				{
+					tasks =
+						databaseContext.Tasks
+						.Where(current => current.IsActive == true)
+						.ToList()
+						;
+				}
 
 				List<Models.ViewModels.TaskViewModel> taskViewModels = new List<Models.ViewModels.TaskViewModel>();
 
@@ -93,6 +109,7 @@ namespace Desktop_Starter
 					taskViewModel.Description = task.Description;
 					taskViewModel.StartDate = task.StartDate.Value;
 					taskViewModel.EndtDate = task.EndtDate;
+					taskViewModel.IsActive = task.IsActive;
 
 					taskViewModels.Add(taskViewModel);
 
@@ -150,6 +167,26 @@ namespace Desktop_Starter
 			nameTextBox.Clear();
 			descriptionTextBox.Clear();
 			startDateMaskedTextBox.Clear();
+		}
+
+		private void taskDataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+		{
+			if (sender is DataGridViewRow)
+			{
+				MessageBox.Show("Test");
+			}
+		}
+
+		private void isShowDeactiveCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (isShowDeactiveCheckBox.Checked == true)
+			{
+				LoadTasks(isShowDeactive: true);
+			}
+			else
+			{
+				LoadTasks(isShowDeactive: false);
+			}
 		}
 	}
 }

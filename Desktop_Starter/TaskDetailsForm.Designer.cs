@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.addTaskGroupBox = new System.Windows.Forms.GroupBox();
+			this.endDateMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+			this.endDateLabel = new System.Windows.Forms.Label();
 			this.statusGroupBox = new System.Windows.Forms.GroupBox();
 			this.ToDoRadioButton = new System.Windows.Forms.RadioButton();
 			this.DoneRadioButton = new System.Windows.Forms.RadioButton();
@@ -38,14 +40,14 @@
 			this.editButton = new System.Windows.Forms.Button();
 			this.nameTextBox = new System.Windows.Forms.TextBox();
 			this.nameLabel = new System.Windows.Forms.Label();
-			this.endDateMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-			this.endDateLabel = new System.Windows.Forms.Label();
+			this.deactiveCheckBox = new System.Windows.Forms.CheckBox();
 			this.addTaskGroupBox.SuspendLayout();
 			this.statusGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// addTaskGroupBox
 			// 
+			this.addTaskGroupBox.Controls.Add(this.deactiveCheckBox);
 			this.addTaskGroupBox.Controls.Add(this.endDateMaskedTextBox);
 			this.addTaskGroupBox.Controls.Add(this.endDateLabel);
 			this.addTaskGroupBox.Controls.Add(this.statusGroupBox);
@@ -61,6 +63,24 @@
 			this.addTaskGroupBox.TabIndex = 0;
 			this.addTaskGroupBox.TabStop = false;
 			this.addTaskGroupBox.Text = "Add Task";
+			// 
+			// endDateMaskedTextBox
+			// 
+			this.endDateMaskedTextBox.Location = new System.Drawing.Point(72, 169);
+			this.endDateMaskedTextBox.Mask = "00/00/0000 90:00";
+			this.endDateMaskedTextBox.Name = "endDateMaskedTextBox";
+			this.endDateMaskedTextBox.Size = new System.Drawing.Size(100, 20);
+			this.endDateMaskedTextBox.TabIndex = 6;
+			this.endDateMaskedTextBox.ValidatingType = typeof(System.DateTime);
+			// 
+			// endDateLabel
+			// 
+			this.endDateLabel.AutoSize = true;
+			this.endDateLabel.Location = new System.Drawing.Point(6, 172);
+			this.endDateLabel.Name = "endDateLabel";
+			this.endDateLabel.Size = new System.Drawing.Size(49, 13);
+			this.endDateLabel.TabIndex = 5;
+			this.endDateLabel.Text = "EndDate";
 			// 
 			// statusGroupBox
 			// 
@@ -146,23 +166,15 @@
 			this.nameLabel.TabIndex = 0;
 			this.nameLabel.Text = "Name";
 			// 
-			// endDateMaskedTextBox
+			// deactiveCheckBox
 			// 
-			this.endDateMaskedTextBox.Location = new System.Drawing.Point(72, 169);
-			this.endDateMaskedTextBox.Mask = "00/00/0000 90:00";
-			this.endDateMaskedTextBox.Name = "endDateMaskedTextBox";
-			this.endDateMaskedTextBox.Size = new System.Drawing.Size(100, 20);
-			this.endDateMaskedTextBox.TabIndex = 6;
-			this.endDateMaskedTextBox.ValidatingType = typeof(System.DateTime);
-			// 
-			// endDateLabel
-			// 
-			this.endDateLabel.AutoSize = true;
-			this.endDateLabel.Location = new System.Drawing.Point(6, 172);
-			this.endDateLabel.Name = "endDateLabel";
-			this.endDateLabel.Size = new System.Drawing.Size(49, 13);
-			this.endDateLabel.TabIndex = 5;
-			this.endDateLabel.Text = "EndDate";
+			this.deactiveCheckBox.AutoSize = true;
+			this.deactiveCheckBox.Location = new System.Drawing.Point(200, 138);
+			this.deactiveCheckBox.Name = "deactiveCheckBox";
+			this.deactiveCheckBox.Size = new System.Drawing.Size(69, 17);
+			this.deactiveCheckBox.TabIndex = 8;
+			this.deactiveCheckBox.Text = "Deactive";
+			this.deactiveCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// TaskDetailsForm
 			// 
@@ -195,5 +207,6 @@
 		private System.Windows.Forms.RadioButton DoneRadioButton;
 		private System.Windows.Forms.MaskedTextBox endDateMaskedTextBox;
 		private System.Windows.Forms.Label endDateLabel;
+		private System.Windows.Forms.CheckBox deactiveCheckBox;
 	}
 }
