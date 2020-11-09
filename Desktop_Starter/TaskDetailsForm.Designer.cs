@@ -183,6 +183,7 @@
             this.ClientSize = new System.Drawing.Size(354, 280);
             this.Controls.Add(this.addTaskGroupBox);
             this.Name = "TaskDetailsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TaskDetailsForm";
             this.addTaskGroupBox.ResumeLayout(false);
             this.addTaskGroupBox.PerformLayout();
